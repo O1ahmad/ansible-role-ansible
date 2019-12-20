@@ -6,8 +6,9 @@
   file:
     path: "{{ install_dir }}"
     state: directory
+  when: install_type == "archive"
 
-- name: Download Lotus archive ({{ archive_url }})
+- name: Download Ansible archive ({{ archive_url }})
   get_url:
     url: "{{ archive_url }}"
     dest: "/tmp/{{ archive_url | urlsplit('path') | basename }}"
@@ -17,7 +18,7 @@
   become: true
   when: install_type == "archive"
 
-- name: Extract Locust archive
+- name: Extract Ansible archive
   unarchive:
     src: "{{ archive_tmp.dest }}"
     dest: "{{ install_dir }}"
@@ -29,10 +30,15 @@
   become: true
   when: install_type == "archive"
 
-- name: Create a symbolic link to /usr/local/bin/lotus
+- name: check if local bin file exists
+  stat:
+    path: /usr/local/bin/ansible
+  register: local_bin
+
+- name: Create a symbolic link to /usr/local/bin/ansible
   become: true
   file:
-    src: "{{ install_dir }}/lotus"
-    dest: /usr/local/bin/lotus
+    src: "{{ install_dir }}/bin/ansible"
+    dest: /usr/local/bin/ansible
     state: link
-  when: install_type == "archive"
+  when: install_type == "archive" and not local_bin.stat.exists

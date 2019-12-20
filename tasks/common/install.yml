@@ -1,0 +1,17 @@
+---
+- name: Ensure Ansible group exists
+  group:
+    name: "{{ ansible_user }}"
+    state: present
+  become: true
+
+- name: Create Ansible user
+  user:
+    comment: Ansible service account
+    name: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  become: true
+
+- name: perform designated installation procedure
+  include_tasks: "common/{{ install_type }}_install.yml"
+  when: not ansible_installed.stat.rc != 0
