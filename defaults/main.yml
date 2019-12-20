@@ -1,11 +1,15 @@
 ---
 # defaults variable file
+ansible_user: ansible
+
 install_type: archive
 install_dir: /opt/ansible
 
-archive_url: https://github.com/filecoin-project/lotus/releases/download/v0.1.0/lotus_v0.1.0_linux-amd64.tar.gz
-archive_checksum: https://github.com/filecoin-project/lotus/releases/download/v0.1.0/lotus_v0.1.0_linux-amd64.tar.gz.sha512
-checksum_format: sha512
+package_name: ansible
+
+archive_url: https://releases.ansible.com/ansible/ansible-2.9.2.tar.gz
+archive_checksum: https://releases.ansible.com/ansible/ansible-2.9.2.tar.gz.sha
+checksum_format: sha256
 
 ansible_config_file: ansible.cfg
 config: {}

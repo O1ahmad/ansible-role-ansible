@@ -1,14 +1,14 @@
-title "Lotus git installation test suite"
+title "Ansible archive installation test suite"
 
-describe directory('/opt/lotus') do
+describe directory('/opt/ansible') do
   it { should exist }
 end
 
-describe file('/usr/local/bin/lotus') do
+describe file('/usr/local/bin/ansible') do
   it { should exist }
-  its('mode') { should cmp '0775' }
 end
 
-describe command('/usr/local/bin/lotus --help') do
+describe command('ansible --help') do
   its('exit_status') { should eq 0 }
 end
+

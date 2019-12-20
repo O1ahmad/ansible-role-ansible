@@ -1,1 +1,2 @@
 ---
+apt_repo: ppa:ansible/ansible

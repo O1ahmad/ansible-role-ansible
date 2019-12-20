@@ -1,0 +1,8 @@
+---
+#######  Source installation #######
+#
+- name: Install Ansible package
+  package:
+    name: "{{ package_name }}"
+    state: absent
+  when: install_type == "package"
