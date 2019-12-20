@@ -1,0 +1,43 @@
+---
+#######  Source installation #######
+
+- name: Create installation directory
+  become: true
+  file:
+    path: "{{ install_dir }}"
+    state: directory
+
+- name: Clone lotus git repository
+  become: true
+  git:
+    repo: "{{ git_url }}"
+    dest: "{{ install_dir }}"
+    version: "{{ git_version }}"
+  when: install_type == "source"
+
+- name: Make clean source
+  become: true
+  make:
+    chdir: "{{ install_dir }}"
+    target: clean
+  environment:
+    PATH: /usr/local/bin:{{ ansible_env.PATH }}
+  when: install_type == "source"
+
+- name: Build source package
+  become: true
+  make:
+    chdir: "{{ install_dir }}"
+    target: all
+  environment:
+    PATH: /usr/local/bin:{{ ansible_env.PATH }}
+  when: install_type == "source"
+
+- name: Install lotus client and miner software
+  become: true
+  make:
+    chdir: "{{ install_dir }}"
+    target: install
+  environment:
+    PATH: /usr/local/bin:{{ ansible_env.PATH }}
+  when: install_type == "source"

@@ -1,0 +1,16 @@
+---
+# defaults variable file
+install_type: archive
+install_dir: /opt/ansible
+
+archive_url: https://github.com/filecoin-project/lotus/releases/download/v0.1.0/lotus_v0.1.0_linux-amd64.tar.gz
+archive_checksum: https://github.com/filecoin-project/lotus/releases/download/v0.1.0/lotus_v0.1.0_linux-amd64.tar.gz.sha512
+checksum_format: sha512
+
+ansible_config_file: ansible.cfg
+config: {}
+
+roles: []
+collections: []
+
+perform_uninstall: false
