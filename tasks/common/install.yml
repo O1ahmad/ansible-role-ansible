@@ -1,15 +1,15 @@
 ---
-- name: Ensure Ansible group exists
+- name: Ensure Ansible controller group exists
   group:
-    name: "{{ ansible_user }}"
+    name: "{{ controller_user }}"
     state: present
   become: true
 
-- name: Create Ansible user
+- name: Create Ansible controller user
   user:
-    comment: Ansible service account
-    name: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    comment: Ansible controller service account
+    name: "{{ controller_user }}"
+    group: "{{ controller_user }}"
   become: true
 
 - name: perform designated installation procedure

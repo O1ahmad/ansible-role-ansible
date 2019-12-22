@@ -6,8 +6,8 @@
   file:
     path: "{{ install_dir }}"
     state: directory
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ controller_user }}"
+    group: "{{ controller_user }}"
   when: install_type == "archive"
 
 - name: Download Ansible archive ({{ archive_url }})
@@ -25,8 +25,8 @@
     src: "{{ archive_tmp.dest }}"
     dest: "{{ install_dir }}"
     mode: '0775'
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ controller_user }}"
+    group: "{{ controller_user }}"
     extra_opts:
       - --strip-components
       - '1'

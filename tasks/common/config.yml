@@ -3,16 +3,16 @@
   become: true
   file:
     path: "{{ config_dir|default(default_config_dir) }}"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ controller_user }}"
+    group: "{{ controller_user }}"
     state: directory
 
 - name: Ensure proper permissions for log file path
   become: true
   file:
     path: "{{ config.defaults.log_path }}"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ controller_user }}"
+    group: "{{ controller_user }}"
     state: touch
   when: config.defaults.log_path is defined
 
@@ -21,8 +21,8 @@
   template:
     src: "{{ ansible_config_file }}.j2"
     dest: "{{ config_dir|default(default_config_dir) }}/{{ ansible_config_file }}"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ controller_user }}"
+    group: "{{ controller_user }}"
     mode: 0644
   vars:
     conf: "{{ config }}"
