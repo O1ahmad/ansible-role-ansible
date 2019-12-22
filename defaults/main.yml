@@ -1,6 +1,6 @@
 ---
 # defaults variable file
-ansible_user: ansible
+controller_user: ansible
 
 install_type: archive
 install_dir: /opt/ansible
