@@ -1,8 +1,8 @@
 Ansible Role :construction: :nut_and_bolt: Ansible
 =========
-[![Galaxy Role](https://img.shields.io/ansible/role/45346.svg)](https://galaxy.ansible.com/0x0I/ansible)
-[![Downloads](https://img.shields.io/ansible/role/d/45346.svg)](https://galaxy.ansible.com/0x0I/ansible)
-[![Build Status](https://travis-ci.org/0x0I/ansible-role-lotus.svg?branch=master)](https://travis-ci.org/0x0I/ansible-role-ansible)
+[![Galaxy Role](https://img.shields.io/ansible/role/45433.svg)](https://galaxy.ansible.com/0x0I/ansible)
+[![Downloads](https://img.shields.io/ansible/role/d/45433.svg)](https://galaxy.ansible.com/0x0I/ansible)
+[![Build Status](https://travis-ci.org/0x0I/ansible-role-ansible.svg?branch=master)](https://travis-ci.org/0x0I/ansible-role-ansible)
 
 **Table of Contents**
   - [Supported Platforms](#supported-platforms)
@@ -10,7 +10,6 @@ Ansible Role :construction: :nut_and_bolt: Ansible
   - [Role Variables](#role-variables)
       - [Install](#install)
       - [Config](#config)
-      - [Launch](#launch)
   - [Dependencies](#dependencies)
   - [Example Playbook](#example-playbook)
   - [License](#license)
@@ -35,7 +34,6 @@ Role Variables
 Variables are available and organized according to the following software & machine provisioning stages:
 * _install_
 * _config_
-* _launch_
 
 #### Install
 
@@ -102,26 +100,6 @@ _The following variables can be customized to manage the content of this TOML co
       ListenAddress = "/ip4/127.0.0.1/tcp/1234/http"
   ```
 
-#### Launch
-
-Running the `lotus` distributed storage network protocol service along with its API server is accomplished utilizing the [systemd](https://www.freedesktop.org/wiki/Software/systemd/) service management tool for both *archive* and *source* installations. Launched as background processes or daemons subject to the configuration and execution potential provided by the underlying management framework, launch of `lotus` can be set to adhere to system administrative policies right for your environment and organization.
-
-_The following variables can be customized to manage the service's **systemd** service unit definition and execution profile/policy:_
-
-`extra_run_args: <lotus-cli-options>` (**default**: `[]`)
-- list of `lotus daemon` commandline arguments to pass to the binary at runtime for customizing launch. Supporting full expression of `lotus daemon`'s cli, this variable enables the launch to be customized according to the user's specification.
-
-`custom_unit_properties: <hash-of-systemd-service-settings>` (**default**: `[]`)
-- hash of settings used to customize the [Service] unit configuration and execution environment of the Lotus **systemd** service.
-
-```yaml
-custom_unit_properties:
-  WorkingDirectory: /path/to/client/dir
-```
-
-Reference the [systemd.service](http://man7.org/linux/man-pages/man5/systemd.service.5.html) *man* page for a configuration overview and reference.
-
-
 Dependencies
 ------------
 
@@ -133,18 +111,17 @@ default example:
 ```
 - hosts: all
   roles:
-  - role: 0xOI.lotus
+  - role: 0xOI.ansible
 ```
 
-install `lotus` from specified *git* source version:
+install `ansible` from specified *archive* version:
 ```
 - hosts: all
   roles:
-  - role: 0xOI.lotus
+  - role: 0xOI.ansible
     vars:
-      install_type: source
-      git_url: https://github.com/filecoin-project/lotus.git
-      git_version: v0.1.1
+      install_type: archive
+      archive_url: https://github.com/filecoin-project/lotus.git
 ```
 
 License
