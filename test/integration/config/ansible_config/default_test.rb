@@ -1,18 +1,17 @@
-title "Lotus config.toml configuration test suite"
+title "Ansible ansible.cfg configuration test suite"
 
-describe file('/home/kitchen/.lotus/config.toml') do
+describe file('/etc/ansible/ansible.cfg') do
   it { should exist }
-  its('owner') { should eq 'kitchen' }
-  its('group') { should eq 'kitchen' }
+  its('owner') { should eq 'ansible' }
+  its('group') { should eq 'ansible' }
   its('mode') { should cmp '0644' }
 
-  its('content') { should match("[API]") }
-  its('content') { should match("ListenAddress =") }
-  its('content') { should match("Timeout =") }
-  its('content') { should match("[Libp2p]") }
-  its('content') { should match("ListenAddresses =") }
-  its('content') { should match("[Metrics]") }
-  its('content') { should match("Nickname =") }
-  its('content') { should match("HeadNotifs =") }
-  its('content') { should match("PubsubTracing =") }
+  its('content') { should match("[default]") }
+  its('content') { should match("log_path = /var/log/ansible.log") }
+  its('content') { should match("debug = true") }
+  its('content') { should match("enable_task_debugger = true") }
+end
+
+describe command('ansible-config dump') do
+  its('exit_status') { should eq 0 }
 end
