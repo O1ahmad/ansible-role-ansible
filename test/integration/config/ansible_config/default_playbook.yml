@@ -2,15 +2,10 @@
 - name: Default playbook for testing
   hosts: test-kitchen
   roles:
-    - ansible-role-lotus
+    - ansible-role-ansible
   vars:
     config:
-      API:
-        ListenAddress: "/ip4/0.0.0.0/tcp/1234/http"
-        Timeout: "30s"
-      Libp2p:
-        ListenAddresses: ["/ip4/0.0.0.0/tcp/0", "/ip6/::/tcp/0"]
-      Metrics:
-        Nickname: "test-example"
-        HeadNotifs: true
-        PubsubTracing: true
+      defaults:
+        log_path: /var/log/ansible.log
+        debug: True
+        enable_task_debugger: True
