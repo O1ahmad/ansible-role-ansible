@@ -103,9 +103,11 @@ suites:
     verifier:
       inspec_tests:
         - path: test/integration/config/ansible_config
-  - name: plugin_install
+  - name: galaxy_install
     provisioner:
-      playbook: test/integration/install/plugin_install/default_playbook.yml
+      playbook: test/integration/install/galaxy_install/default_playbook.yml
     verifier:
+      sudo: true
+      sudo_options: "-u ansible"
       inspec_tests:
-        - path: test/integration/install/plugin_install
+        - path: test/integration/install/galaxy_install
