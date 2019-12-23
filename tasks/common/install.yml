@@ -13,4 +13,7 @@
   become: true
 
 - name: perform designated installation procedure
-  include_tasks: "common/{{ install_type }}_install.yml"
+  include_tasks: "common/install/{{ install_type }}_install.yml"
+
+- name: perform galaxy content installation procedure
+  include_tasks: "common/install/galaxy_install.yml"
