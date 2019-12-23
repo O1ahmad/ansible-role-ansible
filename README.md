@@ -15,7 +15,7 @@ Ansible Role :construction: :nut_and_bolt: Ansible
   - [License](#license)
   - [Author Information](#author-information)
 
-Ansible role that installs and configures Ansible: a software provisioning, configuration management and application-deployment tool.
+Ansible role that installs and configures an Ansible controller: a software provisioning, configuration management and application-deployment tool.
 
 ##### Supported Platforms:
 ```
