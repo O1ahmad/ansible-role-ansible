@@ -37,16 +37,17 @@ Variables are available and organized according to the following software & mach
 
 #### Install
 
-`ansible`can be installed using compressed archives (`.tar`, `.zip`) downloaded and extracted from various sources or built from *git* source.
+`ansible`can be installed using OS package management systems (e.g. `apt`, `yum`) or compressed archives (`.tar`, `.zip`) downloaded and extracted from various sources.
 
 _The following variables can be customized to control various aspects of this installation process, ranging from software version and source location of binaries to the installation directory where they are stored:_
 
-`install_type: <archive | source>` (**default**: archive)
-- **archive**: currently supported by Ubuntu and Fedora distributions (due to availibity of version >= 2.27 of the glibc The GNU libc libraries package -- see [here](http://fr2.rpmfind.net/linux/rpm2html/search.php?query=glibc&submit=Search+...&system=&arch=) for per-distribution package availability) and compatible with both **tar and zip** formats, installation of Lotus via compressed archives results in the direct download of its component binaries, the `lotus` network client and `lotus-storage-miner` mining software, from the specified archive url.
+`ansible_user: <service-user-name>` (**default**: *lotus*)
+- dedicated service user, group and directory used by `ansible` for privilege separation (see [here](https://www.beyondtrust.com/blog/entry/how-separation-privilege-improves-security) for details)
 
-  note: archived installation binaries can be obtained from the official [releases](https://github.com/filecoin-project/lotus/releases) site or those generated from development/custom sources
-
-- **source**: build lotus network client and storage miner binaries from source. This installation process consists of cloning the github hosted [repository](https://github.com/filecoin-project/lotus) and building from source code using `make` directives. See [here]((https://docs.lotu.sh/en+install-lotus-ubuntu) for more details on building from source.
+`install_type: <package | archive>` (**default**: archive)
+- **package**: supported by Debian and Redhat distributions, package installation of Ansible pulls the specified package from the respective package management repository.
+  - Note that the installation directory is determined by the package management system and currently defaults to `/usr/share` for both distros. Attempts to set and execute a package installation on other Linux distros will result in failure due to lack of support.
+- **archive**: compatible with both **tar and zip** formats, archived installation binaries can be obtained from local and remote compressed archives either from the official [releases index](https://releases.ansible.com/ansible/?extIdCarryOver=true&sc_cid=701f2000001OH7YAAW) or those generated from development/custom sources.
 
 `install_dir: </path/to/installation/dir>` (**default**: `/opt/lotus`)
 - path on target host where the `lotus` binaries should be extracted to.
