@@ -44,7 +44,7 @@ Variables are available and organized according to the following software & mach
 _The following variables can be customized to control various aspects of this installation process, ranging from software version and source location of binaries to the installation directory where they are stored:_
 
 `controller_user: <service-user-name>` (**default**: *ansible*)
-- dedicated service user, group and directory used by `ansible` for privilege separation (see [here](https://www.beyondtrust.com/blog/entry/how-separation-privilege-improves-security) for details)
+- dedicated service user and group used by `ansible` for privilege separation (see [here](https://www.beyondtrust.com/blog/entry/how-separation-privilege-improves-security) for details)
 
 `package_name: <package-name-and-version>` (**default**: *ansible*[-latest])
 - name and version of the ansible package to download and install. [Reference](http://fr2.rpmfind.net/linux/rpm2html/search.php?query=ansible&submit=Search+...&system=&arch=) or run something like `dnf --showduplicates list ansible` in a terminal to display a list of available packages for your platform. *ONLY* relevant when `install_type` is set to **package**
@@ -53,7 +53,7 @@ _The following variables can be customized to control various aspects of this in
 - **package**: supported by Debian and Redhat distributions, package installation of Ansible pulls the specified package from the respective package management repository.
 
   - Note that the installation directory is determined by the package management system and currently defaults to under `/usr/{bin,lib, share}` for both distros. Attempts to set and execute a package installation on other Linux distros will result in failure due to lack of support.
-  
+
 - **archive**: compatible with both **tar and zip** formats, archived installation binaries can be obtained from local and remote compressed archives either from the official [releases index](https://releases.ansible.com/ansible/?extIdCarryOver=true&sc_cid=701f2000001OH7YAAW) or those generated from development/custom sources.
 
 `install_dir: </path/to/installation/dir>` (**default**: `/opt/ansible`)
