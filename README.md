@@ -1,3 +1,5 @@
+<p><img src="https://code.benco.io/icon-collection/logos/ansible.svg" alt="ansible logo" title="ansible" align="right" height="60" /></p>
+
 Ansible Role :construction: :nut_and_bolt: Ansible
 =========
 [![Galaxy Role](https://img.shields.io/ansible/role/45433.svg)](https://galaxy.ansible.com/0x0I/ansible)
