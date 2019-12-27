@@ -1,6 +1,6 @@
 title "Ansible ansible.cfg configuration test suite"
 
-describe file('/etc/ansible/ansible.cfg') do
+describe file('/usr/local/etc/ansible/ansible.cfg') do
   it { should exist }
   its('owner') { should eq 'ansible' }
   its('group') { should eq 'ansible' }

@@ -4,5 +4,5 @@
 - name: Install Ansible package
   package:
     name: "{{ package_name }}"
-    state: absent
+    state: present
   when: install_type == "package"

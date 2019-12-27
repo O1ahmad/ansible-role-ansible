@@ -1,4 +1,5 @@
 ---
+
 - name: Ensure existence of config dir
   become: true
   file:
@@ -27,3 +28,10 @@
   vars:
     conf: "{{ config }}"
   when: config is defined and config is not none
+
+- name: Add configuration dir to system-wide profile
+  become: true
+  copy:
+    dest: /etc/profile.d/ansible-vars.sh
+    content: 'ANSIBLE_CONFIG={{ config_dir }}'
+  when: config_dir is defined and config_dir is not none
