@@ -107,7 +107,5 @@ suites:
     provisioner:
       playbook: test/integration/install/galaxy_install/default_playbook.yml
     verifier:
-      sudo: true
-      sudo_options: "-u ansible"
       inspec_tests:
         - path: test/integration/install/galaxy_install
