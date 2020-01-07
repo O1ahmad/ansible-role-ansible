@@ -43,7 +43,7 @@ Variables are available and organized according to the following software & mach
 
 _The following variables can be customized to control various aspects of this installation process, ranging from software version and source location of binaries to the installation directory where they are stored:_
 
-`ansible_user: <service-user-name>` (**default**: *ansible*)
+`controller_user: <service-user-name>` (**default**: *ansible*)
 - dedicated service user, group and directory used by `ansible` for privilege separation (see [here](https://www.beyondtrust.com/blog/entry/how-separation-privilege-improves-security) for details)
 
 `package_name: <package-name-and-version>` (**default**: *ansible*[-latest])
