@@ -1,16 +1,20 @@
 ---
 - name: Ensure Ansible controller group exists
+  become: true
   group:
     name: "{{ controller_user }}"
     state: present
-  become: true
+    system: true
 
 - name: Create Ansible controller user
+  become: true
   user:
     comment: Ansible controller service account
     name: "{{ controller_user }}"
     group: "{{ controller_user }}"
-  become: true
+    shell: "/sbin/nologin"
+    system: true
+    create_home: false
 
 - name: perform designated installation procedure
   include_tasks: "common/install/{{ install_type }}_install.yml"
