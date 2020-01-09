@@ -85,27 +85,27 @@ platforms:
         - systemctl enable ssh.service
 
 suites:
-  - name: archive_install
+  - name: install_archive
     provisioner:
-      playbook: test/integration/install/archive_install/default_playbook.yml
+      playbook: test/integration/install/install_archive/default_playbook.yml
     verifier:
       inspec_tests:
-        - path: test/integration/install/archive_install
-  - name: package_install
+        - path: test/integration/install/install_archive
+  - name: install_package
     provisioner:
-      playbook: test/integration/install/package_install/default_playbook.yml
+      playbook: test/integration/install/install_package/default_playbook.yml
     verifier:
       inspec_tests:
-        - path: test/integration/install/package_install
-  - name: ansible_config
+        - path: test/integration/install/install_package
+  - name: install_galaxy
     provisioner:
-      playbook: test/integration/config/ansible_config/default_playbook.yml
+      playbook: test/integration/install/install_galaxy/default_playbook.yml
     verifier:
       inspec_tests:
-        - path: test/integration/config/ansible_config
-  - name: galaxy_install
+        - path: test/integration/install/install_galaxy
+  - name: config
     provisioner:
-      playbook: test/integration/install/galaxy_install/default_playbook.yml
+      playbook: test/integration/config/default_playbook.yml
     verifier:
       inspec_tests:
-        - path: test/integration/install/galaxy_install
+        - path: test/integration/config

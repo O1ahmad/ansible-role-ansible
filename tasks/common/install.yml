@@ -1,5 +1,5 @@
 ---
-- name: Ensure Ansible controller group exists
+- name: Create Ansible controller group
   become: true
   group:
     name: "{{ controller_user }}"
@@ -16,8 +16,8 @@
     system: true
     create_home: false
 
-- name: perform designated installation procedure
+- name: Install controller based on install type
   include_tasks: "common/install/{{ install_type }}_install.yml"
 
-- name: perform galaxy content installation procedure
+- name: Install galaxy content
   include_tasks: "common/install/galaxy_install.yml"
