@@ -1,6 +1,4 @@
 ---
-#######  Source installation #######
-#
 - name: Install Ansible package
   package:
     name: "{{ package_name }}"
