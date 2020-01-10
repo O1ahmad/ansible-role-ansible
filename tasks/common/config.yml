@@ -19,8 +19,8 @@
 - name: Render Ansible configuration
   become: true
   template:
-    src: "{{ ansible_config_file }}.j2"
-    dest: "{{ config_dir }}/{{ ansible_config_file }}"
+    src: "{{ _ansible_config_file }}.j2"
+    dest: "{{ config_dir }}/{{ _ansible_config_file }}"
     owner: "{{ controller_user }}"
     group: "{{ controller_user }}"
     mode: 0644
