@@ -11,7 +11,7 @@ archive_checksum: https://releases.ansible.com/ansible/ansible-2.9.2.tar.gz.sha
 checksum_format: sha256
 
 config_dir: /etc/ansible
-ansible_config_file: ansible.cfg
+_ansible_config_file: ansible.cfg
 config: {}
 
 galaxy_roles: []
