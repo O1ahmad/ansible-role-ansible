@@ -4,3 +4,6 @@
     name: "{{ package_name }}"
     state: present
   when: install_type == "package"
+  tags:
+    - install
+    - package

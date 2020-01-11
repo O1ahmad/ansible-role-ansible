@@ -6,9 +6,15 @@
         - "{{ ansible_distribution|lower }}.yml"
         - "{{ ansible_os_family|lower }}.yml"
       skip: true
+  tags:
+    - always
 
-- name: Include common provisioning tasks
-  include_tasks: "common/{{ item }}.yml"
-  with_items:
-    - "install"
-    - "config"
+- name: Include common install tasks
+  include_tasks: "common/install.yml"
+  tags:
+    - install
+
+- name: Include common config tasks
+  include_tasks: "common/config.yml"
+  tags:
+    - config

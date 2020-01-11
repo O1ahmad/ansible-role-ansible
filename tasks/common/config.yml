@@ -6,6 +6,8 @@
     owner: "{{ controller_user }}"
     group: "{{ controller_user }}"
     state: directory
+  tags:
+    - config
 
 - name: Create log file path
   become: true
@@ -15,6 +17,9 @@
     group: "{{ controller_user }}"
     state: touch
   when: config.defaults.log_path is defined and config.defaults.log_path|length > 0
+  tags:
+    - config
+    - log
 
 - name: Render Ansible configuration
   become: true
@@ -27,9 +32,13 @@
   vars:
     conf: "{{ config }}"
   when: config is defined and config.keys()|length > 0
+  tags:
+    - config
 
 - name: Set system-wide configuration dir envvar
   become: true
   copy:
     dest: /etc/profile.d/ansible-vars.sh
     content: 'ANSIBLE_CONFIG={{ config_dir }}'
+  tags:
+    - config

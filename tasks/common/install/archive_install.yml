@@ -7,6 +7,9 @@
     owner: "{{ controller_user }}"
     group: "{{ controller_user }}"
   when: install_type == "archive"
+  tags:
+    - install
+    - archive
 
 - name: Download Ansible archive ({{ archive_url }})
   become: true
@@ -17,6 +20,9 @@
     mode: '0775'
   register: archive_tmp
   when: install_type == "archive"
+  tags:
+    - install
+    - archive
 
 - name: Extract Ansible archive
   become: true
@@ -31,11 +37,17 @@
       - '1'
     remote_src: true
   when: install_type == "archive"
+  tags:
+    - install
+    - archive
 
 - name: check if local bin file exists
   stat:
     path: /usr/local/bin/ansible
   register: local_bin
+  tags:
+    - install
+    - archive
 
 - name: Create a symbolic link to /usr/local/bin/ansible
   become: true
@@ -44,3 +56,6 @@
     dest: /usr/local/bin/ansible
     state: link
   when: install_type == "archive" and not local_bin.stat.exists
+  tags:
+    - install
+    - archive
