@@ -5,6 +5,9 @@
   command: "ansible-galaxy role install {{ item }} {{ galaxy_extra_args | join(' ') }}"
   loop: "{{ galaxy_roles }}"
   when: galaxy_roles is defined and galaxy_roles|length > 0
+  tags:
+    - install
+    - galaxy
 
 - name: Install Ansible galaxy collections
   become: true
@@ -12,3 +15,6 @@
   command: "ansible-galaxy collection install {{ item }} {{ galaxy_extra_args | join(' ') }}"
   loop: "{{ galaxy_collections }}"
   when: galaxy_collections is defined and galaxy_collections|length > 0
+  tags:
+    - install
+    - galaxy
