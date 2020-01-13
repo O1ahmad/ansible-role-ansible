@@ -12,6 +12,7 @@ Ansible Role :construction: :nut_and_bolt: Ansible
   - [Role Variables](#role-variables)
       - [Install](#install)
       - [Config](#config)
+      - [Uninstall](#uninstall)
   - [Dependencies](#dependencies)
   - [Example Playbook](#example-playbook)
   - [License](#license)
@@ -106,6 +107,15 @@ _The following variables can be customized to manage the content of this INI con
       # Section setting inventory with value of inventory host sources directory
       inventory = /var/data/ansible/inventory
   ```
+
+#### Uninstall
+
+Remove both package and archive installations as well as managed Ansible configs, returning the target host to its configured state prior to application of this role (e.g. can be useful for recycling configuration settings during system upgrades).
+
+_The following variable(s) can be customized to manage this uninstall process:_
+
+`perform_uninstall: <true | false>` (**default**: `false`)
+- whether to uninstall managed Ansible installations and configurations on a target host (**see**: `handlers/main.yml` for details)
 
 Dependencies
 ------------
