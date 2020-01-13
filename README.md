@@ -76,32 +76,32 @@ _The following variables can be customized to control various aspects of this in
 
 #### Config
 
-Configuration of the `ansible` controller can be expressed in a config file named `ansible.cfg` written in [TOML](https://github.com/toml-lang/toml), a minimal markup language. Customary with TOML configurations, each section represents a set of configuration options for various aspects of the Ansible controller's behavior. See [here](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#ansible-configuration-settings) for a list of available configuration options and an example config [here](https://github.com/ansible/ansible/blob/devel/examples/ansible.cfg) for reference.
+Configuration of the `ansible` controller can be expressed in a config file named `ansible.cfg` written in TOML or [INI](https://www.techopedia.com/definition/24302/ini-file), a minimal markup language. Customary with INI configurations, each section represents a set of configuration options for various aspects of the Ansible controller's behavior. See [here](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#ansible-configuration-settings) for a list of available configuration options and an example config [here](https://github.com/ansible/ansible/blob/devel/examples/ansible.cfg) for reference.
 
 **Note:** This file can be found under the directory specified by the `ANSIBLE_CONFIG` environment variable or in predefined locations loaded according to a set precedence order (as set by the `config_dir` variable defined below).
 
-_The following variables can be customized to manage the content of this TOML configuration:_
+_The following variables can be customized to manage the content of this INI configuration:_
 
 `config_dir: </path/to/configuration/dir>` (**default**: `/etc/ansible`)
-- path on target host where the aforementioned TOML configuration file should be stored
+- path on target host where the aforementioned INI configuration file should be stored
 
 `config: {"<config-section>": {"<section-setting>": "<setting-value>",..},..}` **default**: see `defaults/main.yml`
 
-* Any configuration setting/value key-pair supported by `ansible` should be expressible within the `config` hash and properly rendered within the associated TOML config. Values can be expressed in typical _yaml/ansible_ form (e.g. Strings, numbers and true/false values should be written as is and without quotes).
+* Any configuration setting/value key-pair supported by `ansible` should be expressible within the `config` hash and properly rendered within the associated INI config. Values can be expressed in typical _yaml/ansible_ form (e.g. Strings, numbers and true/false values should be written as is and without quotes).
 
   Furthermore, configuration is not constrained by hardcoded author defined defaults or limited by pre-baked templating. If the config section, setting and value are recognized by the `ansible` tool, :thumbsup: to define within `config`.
 
-  Keys of the `config` hash represent TOML config sections:
+  Keys of the `config` hash represent INI config sections:
   ```yaml
   config:
-    # [TOML Section 'defaults']
+    # [INI Section 'defaults']
     defaults: {}
   ```
 
   Values of `config[<key>]` represent key,value pairs within an embedded hash expressing config settings:
   ```yaml
   config:
-    # TOML Section '[defaults]'
+    # INI Section '[defaults]'
     defaults:
       # Section setting inventory with value of inventory host sources directory
       inventory = /var/data/ansible/inventory
@@ -130,10 +130,9 @@ install `ansible` from specified *archive* latest version:
       install_type: archive
       archive_url: https://releases.ansible.com/ansible/ansible-latest.tar.gz
       archive_checksum: https://releases.ansible.com/ansible/ansible-latest.tar.gz.sha
-      checksum_format: sha256
 ```
 
-change configuration directory from default:
+change configuration directory from default and alter path to store/search for roles:
 ```
 - hosts: all
   roles:
@@ -155,6 +154,18 @@ alter log path and debug output for troubleshooting/debugging purposes:
         defaults:
            log_path: /mnt/log/ansible/debug.log
            debug: True
+```
+
+install a set of roles and collections by default:
+```
+- hosts: all
+  roles:
+  - role: 0xOI.ansible
+    vars:
+      galaxy_roles:
+        - 0x0I.systemd
+      galaxy_collections:
+        - newswangerd.collection_demo
 ```
 
 License
