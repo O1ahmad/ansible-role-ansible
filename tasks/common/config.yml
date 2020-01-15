@@ -9,6 +9,18 @@
   tags:
     - config
 
+- name: Create log file directory
+  become: true
+  file:
+    path: "{{ config.defaults.log_path | dirname }}"
+    owner: "{{ controller_user }}"
+    group: "{{ controller_user }}"
+    state: directory
+  when: config.defaults.log_path is defined and config.defaults.log_path|length > 0
+  tags:
+    - config
+    - log
+
 - name: Create log file path
   become: true
   file:
