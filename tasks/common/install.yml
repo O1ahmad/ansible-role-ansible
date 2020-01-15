@@ -14,9 +14,7 @@
     comment: Ansible controller service account
     name: "{{ controller_user }}"
     group: "{{ controller_user }}"
-    shell: "/sbin/nologin"
     system: true
-    create_home: false
   tags:
     - install
 
