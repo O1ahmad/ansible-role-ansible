@@ -139,7 +139,7 @@ install `ansible` from specified *archive* latest version:
     vars:
       install_type: archive
       archive_url: https://releases.ansible.com/ansible/ansible-latest.tar.gz
-      archive_checksum: https://releases.ansible.com/ansible/ansible-latest.tar.gz.sha
+      archive_checksum: 2f83f8ccc50640aa41a24f6e7757ac06b0ee6189fdcaacab68851771d3b42f3a
 ```
 
 change configuration directory from default and alter path to store/search for roles:
