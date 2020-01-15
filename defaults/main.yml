@@ -1,7 +1,7 @@
 ---
 controller_user: ansible
 
-install_type: archive
+install_type: package
 install_dir: /opt/ansible
 
 package_name: ansible
