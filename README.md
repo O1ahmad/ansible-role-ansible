@@ -5,6 +5,7 @@ Ansible Role :construction: :nut_and_bolt: Ansible
 [![Galaxy Role](https://img.shields.io/ansible/role/45433.svg)](https://galaxy.ansible.com/0x0I/ansible)
 [![Downloads](https://img.shields.io/ansible/role/d/45433.svg)](https://galaxy.ansible.com/0x0I/ansible)
 [![Build Status](https://travis-ci.org/0x0I/ansible-role-ansible.svg?branch=master)](https://travis-ci.org/0x0I/ansible-role-ansible)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **Table of Contents**
   - [Supported Platforms](#supported-platforms)
@@ -181,7 +182,7 @@ install a set of roles and collections by default:
 License
 -------
 
-Apache, BSD, MIT
+MIT
 
 Author Information
 ------------------
