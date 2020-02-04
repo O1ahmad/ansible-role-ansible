@@ -54,7 +54,7 @@ _The following variables can be customized to control various aspects of this in
 `install_type: <package | archive>` (**default**: archive)
 - **package**: supported by Debian and Redhat distributions, package installation of Ansible pulls the specified package from the respective package management repository.
 
-  - Note that the installation directory is determined by the package management system and currently defaults to under `/usr/{bin,lib, share}` for both distros. Attempts to set and execute a package installation on other Linux distros will result in failure due to lack of support.
+  - Note that the installation directory is determined by the package management system and currently defaults to under `/usr/{bin,lib, share}` for both distros.
 
 - **archive**: compatible with both **tar and zip** formats, archived installation binaries can be obtained from local and remote compressed archives either from the official [releases index](https://releases.ansible.com/ansible/?extIdCarryOver=true&sc_cid=701f2000001OH7YAAW) or those generated from development/custom sources.
 
@@ -134,7 +134,7 @@ default example:
 
 install `ansible` from specified *archive* latest version:
 ```
-- hosts: all
+- hosts: controller
   roles:
   - role: 0xOI.ansible
     vars:
@@ -145,7 +145,7 @@ install `ansible` from specified *archive* latest version:
 
 change configuration directory from default and alter path to store/search for roles:
 ```
-- hosts: all
+- hosts: controller
   roles:
   - role: 0xOI.ansible
     vars:
@@ -157,7 +157,7 @@ change configuration directory from default and alter path to store/search for r
 
 alter log path and debug output for troubleshooting/debugging purposes:
 ```
-- hosts: all
+- hosts: controller
   roles:
   - role: 0xOI.ansible
     vars:
@@ -169,7 +169,7 @@ alter log path and debug output for troubleshooting/debugging purposes:
 
 install a set of roles and collections by default:
 ```
-- hosts: all
+- hosts: controller
   roles:
   - role: 0xOI.ansible
     vars:
