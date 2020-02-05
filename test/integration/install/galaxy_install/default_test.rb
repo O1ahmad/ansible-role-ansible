@@ -1,4 +1,4 @@
-title "Ansible Galaxy content install test suite"
+title "Ansible Galaxy content installation integration tests"
 
 describe directory('/home/ansible/.ansible/roles/0x0i.systemd') do
   it { should exist }

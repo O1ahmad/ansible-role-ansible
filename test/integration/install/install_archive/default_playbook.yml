@@ -1,7 +1,7 @@
 ---
-- name: Default playbook for testing
+- name: Ansible archive installation integration test playbook
   hosts: test-kitchen
   roles:
-    - ansible-role-ansible
-  vars:
-    install_type: archive
+    - role: ansible-role-ansible
+      vars:
+        install_type: archive
