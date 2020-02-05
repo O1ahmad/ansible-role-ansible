@@ -1,4 +1,4 @@
-title "Ansible ansible.cfg configuration test suite"
+title "Ansible configuration integration tests"
 
 describe file('/usr/local/etc/ansible/ansible.cfg') do
   it { should exist }

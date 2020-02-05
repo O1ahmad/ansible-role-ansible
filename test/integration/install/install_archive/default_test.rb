@@ -1,4 +1,4 @@
-title "Ansible archive installation test suite"
+title "Ansible archive installation integration tests"
 
 describe directory('/opt/ansible') do
   it { should exist }

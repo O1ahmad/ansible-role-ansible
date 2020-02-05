@@ -1,4 +1,4 @@
-title "Ansible package installation test suite"
+title "Ansible package installation integration tests"
 
 describe file('/usr/bin/ansible') do
   it { should exist }

@@ -1,4 +1,4 @@
-title "Ansible ansible.cfg configuration test suite"
+title "Ansible configuration integration tests"
 
 describe directory('/opt/ansible') do
   it { should_not exist }
