@@ -21,18 +21,6 @@
     - config
     - log
 
-- name: Create log file path
-  become: true
-  file:
-    path: "{{ config.defaults.log_path }}"
-    owner: "{{ controller_user }}"
-    group: "{{ controller_user }}"
-    state: touch
-  when: config.defaults.log_path is defined and config.defaults.log_path|length > 0
-  tags:
-    - config
-    - log
-
 - name: Render Ansible configuration
   become: true
   template:
