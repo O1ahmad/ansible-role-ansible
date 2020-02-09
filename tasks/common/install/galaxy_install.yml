@@ -2,11 +2,11 @@
 - name: Install Ansible galaxy roles
   become: true
   become_user: "{{ controller_user }}"
+  when: galaxy_roles is defined and galaxy_roles|length > 0
   command:
     cmd: "ansible-galaxy role install {{ item }} {{ galaxy_extra_args | join(' ') }}"
     creates: "/home/{{ controller_user }}/.ansible/roles/{{ item }}"
   loop: "{{ galaxy_roles }}"
-  when: galaxy_roles is defined and galaxy_roles|length > 0
   tags:
     - install
     - galaxy
@@ -14,11 +14,11 @@
 - name: Install Ansible galaxy collections
   become: true
   become_user: "{{ controller_user }}"
+  when: galaxy_collections is defined and galaxy_collections|length > 0
   command:
     cmd: "ansible-galaxy collection install {{ item }} {{ galaxy_extra_args | join(' ') }}"
     creates: "/home/{{ controller_user }}/.ansible/collections/ansible_collections/{{ item.split('.')|join('/') }}"
   loop: "{{ galaxy_collections }}"
-  when: galaxy_collections is defined and galaxy_collections|length > 0
   tags:
     - install
     - galaxy

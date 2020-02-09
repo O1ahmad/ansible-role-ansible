@@ -11,12 +11,12 @@
 
 - name: Create log file directory
   become: true
+  when: config.defaults is defined and config.defaults.log_path is defined and config.defaults.log_path|length > 0
   file:
     path: "{{ config.defaults.log_path | dirname }}"
     owner: "{{ controller_user }}"
     group: "{{ controller_user }}"
     state: directory
-  when: config.defaults.log_path is defined and config.defaults.log_path|length > 0
   tags:
     - config
     - log

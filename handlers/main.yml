@@ -1,11 +1,11 @@
 ---
 - name: Uninstall ansible service package
   become: true
+  when: install_type == "package"
   package:
     name: "{{ package_name }}"
     state: absent
   listen: Uninstall service
-  when: install_type == "package"
 
 - name: Remove Ansible install dir
   become: true
