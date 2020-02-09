@@ -24,13 +24,13 @@ transport:
 provisioner:
   hosts: test-kitchen
   name: ansible_playbook
-  require_chef_for_busser: false
-  require_ruby_for_busser: false
-  ansible_verbosity: 2
+  require_pip: true
+  ansible_version: 2.9.4
   ansible_verbose: true
   ansible_cfg_path: test/ansible.cfg
-  requirements_path: test/requirements-test.yml
   idempotency_test: true
+  require_chef_for_busser: false
+  require_ruby_for_busser: false
 
 verifier:
   name: inspec
@@ -48,8 +48,6 @@ platforms:
         - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
         - systemctl enable sshd.service
         - yum -y install python-pip
-    provisioner:
-      require_pip: true
   - name: fedora-31
     driver_config:
       <<: *default_driver_config
@@ -57,8 +55,6 @@ platforms:
         - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
         - systemctl enable sshd.service
         - yum -y install python-pip
-    provisioner:
-      require_pip: true
   - name: ubuntu-18.04
     driver_config:
       <<: *default_driver_config
@@ -104,6 +100,8 @@ suites:
   - name: install_galaxy
     provisioner:
       playbook: test/integration/install/install_galaxy/default_playbook.yml
+      require_pip: false
+      ansible_version: latest
     verifier:
       inspec_tests:
         - path: test/integration/install/install_galaxy
