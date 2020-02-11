@@ -3,9 +3,10 @@
 Ansible Role :construction: :nut_and_bolt: Ansible
 =========
 [![Galaxy Role](https://img.shields.io/ansible/role/45433.svg)](https://galaxy.ansible.com/0x0I/ansible)
-[![Downloads](https://img.shields.io/ansible/role/d/45433.svg)](https://galaxy.ansible.com/0x0I/ansible)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/0x0I/ansible-role-ansible?color=yellow)
+[![Downloads](https://img.shields.io/ansible/role/d/45433.svg?color=lightgrey)](https://galaxy.ansible.com/0x0I/ansible)
 [![Build Status](https://travis-ci.org/0x0I/ansible-role-ansible.svg?branch=master)](https://travis-ci.org/0x0I/ansible-role-ansible)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blueviolet.svg)](https://opensource.org/licenses/MIT)
 
 **Table of Contents**
   - [Supported Platforms](#supported-platforms)
@@ -80,7 +81,7 @@ _The following variables can be customized to control various aspects of this in
 
 Configuration of the `ansible` controller can be expressed in a config file named `ansible.cfg` written in TOML or [INI](https://www.techopedia.com/definition/24302/ini-file), a minimal markup language. Customary with INI configurations, each section represents a set of configuration options for various aspects of the Ansible controller's behavior. See [here](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#ansible-configuration-settings) for a list of available configuration options and an example config [here](https://github.com/ansible/ansible/blob/devel/examples/ansible.cfg) for reference.
 
-**Note:** This file can be found under the directory specified by the `ANSIBLE_CONFIG` environment variable or in predefined locations loaded according to a set precedence order (as set by the `config_dir` variable defined below).
+**Note:** This file can be found under the directory specified by the `ANSIBLE_CONFIG` environment variable or in predefined locations loaded according to a set precedence order (as managed by the `config_dir` variable defined below).
 
 _The following variables can be customized to manage the content of this INI configuration:_
 
@@ -111,7 +112,7 @@ _The following variables can be customized to manage the content of this INI con
 
 #### Uninstall
 
-Remove both package and archive installations as well as managed Ansible configs, returning the target host to its configured state prior to application of this role (e.g. can be useful for recycling configuration settings during system upgrades).
+Remove both package and archive installations as well as managed Ansible configs returning the target host to its configured state prior to application of this role (e.g. can be useful for recycling configuration settings during system upgrades).
 
 _The following variable(s) can be customized to manage this uninstall process:_
 
@@ -121,7 +122,7 @@ _The following variable(s) can be customized to manage this uninstall process:_
 Dependencies
 ------------
 
-- 0x0i.systemd
+None
 
 Example Playbook
 ----------------
@@ -139,8 +140,8 @@ install `ansible` from specified *archive* latest version:
   - role: 0xOI.ansible
     vars:
       install_type: archive
-      archive_url: https://releases.ansible.com/ansible/ansible-latest.tar.gz
-      archive_checksum: 2f83f8ccc50640aa41a24f6e7757ac06b0ee6189fdcaacab68851771d3b42f3a
+      archive_url: https://releases.ansible.com/ansible/ansible-2.9.4.tar.gz
+      archive_checksum: 2517bf4743d52f00d509396a41e9ce44e5bc1285bd7aa53dfe28ea02fc1a75a6
 ```
 
 change configuration directory from default and alter path to store/search for roles:
