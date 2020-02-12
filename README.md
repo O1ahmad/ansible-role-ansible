@@ -130,14 +130,14 @@ default example:
 ```
 - hosts: all
   roles:
-  - role: 0xOI.ansible
+  - role: 0x0I.ansible
 ```
 
 install `ansible` from specified *archive* latest version:
 ```
 - hosts: controller
   roles:
-  - role: 0xOI.ansible
+  - role: 0x0I.ansible
     vars:
       install_type: archive
       archive_url: https://releases.ansible.com/ansible/ansible-2.9.4.tar.gz
@@ -148,7 +148,7 @@ change configuration directory from default and alter path to store/search for r
 ```
 - hosts: controller
   roles:
-  - role: 0xOI.ansible
+  - role: 0x0I.ansible
     vars:
       config_dir: /path/to/config/dir
       config:
@@ -160,7 +160,7 @@ alter log path and debug output for troubleshooting/debugging purposes:
 ```
 - hosts: controller
   roles:
-  - role: 0xOI.ansible
+  - role: 0x0I.ansible
     vars:
       config:
         defaults:
@@ -172,7 +172,7 @@ install a set of roles and collections by default:
 ```
 - hosts: controller
   roles:
-  - role: 0xOI.ansible
+  - role: 0x0I.ansible
     vars:
       galaxy_roles:
         - 0x0I.systemd
