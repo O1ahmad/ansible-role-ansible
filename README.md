@@ -108,7 +108,7 @@ _The following variables can be customized to manage the content of this INI con
     # INI Section '[defaults]'
     defaults:
       # Section setting inventory with value of inventory host sources directory
-      inventory = /var/data/ansible/inventory
+      inventory: /var/data/ansible/inventory
   ```
 
 #### Uninstall
