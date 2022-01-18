@@ -6,8 +6,8 @@ install_dir: /opt/ansible
 
 package_name: ansible
 
-archive_url: https://releases.ansible.com/ansible/ansible-2.9.2.tar.gz
-archive_checksum: https://releases.ansible.com/ansible/ansible-2.9.2.tar.gz.sha
+archive_url: https://releases.ansible.com/ansible/ansible-2.9.27.tar.gz
+archive_checksum: https://releases.ansible.com/ansible/ansible-2.9.27.tar.gz.sha
 checksum_format: sha256
 
 config_dir: /etc/ansible
