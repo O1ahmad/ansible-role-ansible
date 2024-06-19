@@ -2,10 +2,8 @@
 
 Ansible Role :construction: :nut_and_bolt: Ansible
 =========
-[![Galaxy Role](https://img.shields.io/ansible/role/45433.svg)](https://galaxy.ansible.com/0x0I/ansible)
+[![Galaxy Role](https://img.shields.io/ansible/role/d/0x0i/ansible)](https://galaxy.ansible.com/0x0I/ansible)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/0x0I/ansible-role-ansible?color=yellow)
-[![Downloads](https://img.shields.io/ansible/role/d/45433.svg?color=lightgrey)](https://galaxy.ansible.com/0x0I/ansible)
-[![Build Status](https://travis-ci.org/0x0I/ansible-role-ansible.svg?branch=master)](https://travis-ci.org/0x0I/ansible-role-ansible)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blueviolet.svg)](https://opensource.org/licenses/MIT)
 
 **Table of Contents**
